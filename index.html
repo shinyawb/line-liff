@@ -5,14 +5,23 @@
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 <body>
+  <p id="msg">読み込み中...</p>
   <script>
     liff.init({ liffId: "2009670871-HWqVIXeE" })
       .then(() => {
-        liff.getProfile().then(profile => {
-          const lineUserId = profile.userId;
-          const calUrl = "https://cal.com/kscholarship/soudan";
+        document.getElementById('msg').textContent = 'LIFF初期化OK、プロフィール取得中...';
+        return liff.getProfile();
+      })
+      .then(profile => {
+        const lineUserId = profile.userId;
+        document.getElementById('msg').textContent = 'UserID取得OK: ' + lineUserId;
+        const calUrl = "https://cal.com/kscholarship/soudan";
+        setTimeout(() => {
           window.location.href = calUrl + "?line_user_id=" + lineUserId;
-        });
+        }, 1000);
+      })
+      .catch(err => {
+        document.getElementById('msg').textContent = 'エラー: ' + err.message;
       });
   </script>
 </body>
