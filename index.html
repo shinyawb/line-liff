@@ -10,7 +10,7 @@
       .then(() => {
         liff.getProfile().then(profile => {
           const lineUserId = profile.userId;
-          const calUrl = "https://cal.com/あなたのユーザー名/相談";
+          const calUrl = "https://cal.com/kscholarship/soudan";
           window.location.href = calUrl + "?line_user_id=" + lineUserId;
         });
       });
