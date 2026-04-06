@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <script>
+    liff.init({ liffId: "ここにLIFF IDを入れる" })
+      .then(() => {
+        liff.getProfile().then(profile => {
+          const lineUserId = profile.userId;
+          const calUrl = "https://cal.com/あなたのユーザー名/相談";
+          window.location.href = calUrl + "?line_user_id=" + lineUserId;
+        });
+      });
+  </script>
+</body>
+</html>
